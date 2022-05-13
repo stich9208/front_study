@@ -1,4 +1,5 @@
-var path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 module.exports = {
   entry: {
     app: "./src/index.js",
@@ -6,20 +7,19 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    clean: true,
   },
   devServer: {
     port: 3000,
     hot: true,
   },
-  //   module: {
-  //     loaders: [
-  //       {
-  //         test: path.join(__dirname, "es6"),
-  //         loader: "babel-loader",
-  //         query: {
-  //           presets: ["es2015"],
-  //         },
-  //       },
-  //     ],
-  //   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
 };
