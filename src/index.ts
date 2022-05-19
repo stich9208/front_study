@@ -3,8 +3,8 @@ import { App } from "./App";
 
 const main = document.getElementsByClassName("App")[0];
 
-const render = (app: Function): void => {
-  main.innerHTML = app();
+const render = (): void => {
+  main.appendChild(App());
 };
 
-render(App);
+render();
