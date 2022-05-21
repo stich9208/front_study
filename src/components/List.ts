@@ -1,7 +1,8 @@
-import { createHtmlElement } from "../util";
+import { createHtmlElement, updateState } from "../util";
+import { render, store } from "../index";
 
-export const List = (): HTMLElement => {
-  const div_ = createHtmlElement("div");
-  div_.innerText = "List";
-  return div_;
+const main = document.getElementsByClassName("App")[0];
+
+export const List = (): string => {
+  return `<div>List<button class="bubu">Click me !!!</button></div>`;
 };

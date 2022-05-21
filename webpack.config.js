@@ -12,11 +12,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    open: ["/web"],
     hot: true,
-    devMiddleware: {
-      publicPath: "/web",
-    },
   },
   module: {
     rules: [
