@@ -12,8 +12,6 @@ const Route = (path: string): void => {
 
 const Router = () => {};
 
-console.log(pathname);
-
 export const App = (): HTMLElement => {
   return pathname === "/web" ? List() : Detail();
 };
