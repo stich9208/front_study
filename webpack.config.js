@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+
 module.exports = {
   entry: {
     app: "./src/index.ts",
@@ -11,8 +12,11 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    hot: true,
     open: ["/web"],
+    hot: true,
+    devMiddleware: {
+      publicPath: "/web",
+    },
   },
   module: {
     rules: [
