@@ -1,32 +1,23 @@
 import "../styles.css";
-import { App } from "./App";
 
-import { updateState } from "./util";
+import { root, store, render, updateState, moveRoute } from "./util";
 
-const main = document.getElementsByClassName("App")[0];
+const { pathname } = location;
 
-export let store = {
-  currentPath: "/",
-};
+if (pathname !== store.currentPath) {
+  updateState({ currentPath: location.pathname }, store, root);
+}
 
-export const render = (root: Element) => {
-  const { pathname } = window.location;
-  console.log("render", pathname);
-  root.innerHTML = App();
-};
+window.addEventListener("popstate", (e) =>
+  updateState({ currentPath: location.pathname }, store, root)
+);
 
-// if (pathname !== initialState.currentPath) {
-//   updateState({ currentPath: pathname }, initialState, main, render);
-// }
+window.addEventListener("popstate", (e) =>
+  updateState({ currentPath: location.pathname }, store, root)
+);
 
-window.addEventListener("popstate", () => console.log("poppo"));
-
-render(main);
-
-const clickFunc = () => {
-  window.history.pushState({}, "/lala", window.location.origin + "/lala");
-  updateState({ currentPath: "/lala" }, store, main, render);
-};
+render(root, store);
 
 const btn = document.getElementsByClassName("bubu")[0];
-btn.addEventListener("click", clickFunc);
+const dbtn = document.getElementsByClassName("detail")[0];
+dbtn.addEventListener("click", (e) => moveRoute(e, "/products/191919"));

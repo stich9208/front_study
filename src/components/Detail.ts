@@ -1,7 +1,3 @@
-import { createHtmlElement } from "../util";
-
-export const Detail = (): HTMLElement => {
-  const div_ = createHtmlElement("div");
-  div_.innerText = "Detail";
-  return div_;
+export const Detail = (id: number): string => {
+  return `<div>${id}</div>`;
 };
