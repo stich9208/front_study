@@ -1,23 +1,22 @@
 import "../styles.css";
-
-import { root, store, render, updateState, moveRoute } from "./util";
+import { root, store, render, updateState, getList } from "./util";
 
 const { pathname } = location;
 
+//add event
+window.addEventListener("popstate", (e) =>
+  updateState({ currentPath: location.pathname }, store)
+);
+
+//list call
+getList();
+
 if (pathname !== store.currentPath) {
-  updateState({ currentPath: location.pathname }, store, root);
+  updateState({ currentPath: location.pathname }, store);
 }
-
-window.addEventListener("popstate", (e) =>
-  updateState({ currentPath: location.pathname }, store, root)
-);
-
-window.addEventListener("popstate", (e) =>
-  updateState({ currentPath: location.pathname }, store, root)
-);
 
 render(root, store);
 
-const btn = document.getElementsByClassName("bubu")[0];
-const dbtn = document.getElementsByClassName("detail")[0];
-dbtn.addEventListener("click", (e) => moveRoute(e, "/products/191919"));
+// const btn = document.getElementsByClassName("bubu")[0];
+// const dbtn = document.getElementsByClassName("detail")[0];
+// dbtn.addEventListener("click", (e) => moveRoute(e, "/products/191919"));
