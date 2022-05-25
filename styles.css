@@ -37,6 +37,7 @@ body {
   background-color: #fff;
   border: 1px solid #ccc;
   margin: 8px;
+  cursor: pointer;
 }
 
 .Product img {
