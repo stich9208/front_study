@@ -13,6 +13,7 @@ export let store: storeInterface = {
 //functions
 export const render = (root: Element, store: any): void => {
   root.innerHTML = Router(store);
+  addEvent();
 };
 
 export const updateState = (newState: any, state: any): void => {
@@ -21,7 +22,7 @@ export const updateState = (newState: any, state: any): void => {
   return render(root, store);
 };
 
-export const moveRoute = (e: Event, path: string) => {
+export const moveRoute = (path: string) => {
   window.history.pushState({}, path, location.origin + path);
   updateState({ currentPath: path }, store);
 };
@@ -33,4 +34,14 @@ export const getList = async () => {
     .catch((err) => console.log("list api error", err));
 };
 
-// export const getProduct =
+export const addEvent = () => {
+  if (store.currentPath === "/") {
+    const ProductList = document.getElementsByClassName("Product");
+    for (let product of ProductList) {
+      product.addEventListener("click", (e: Event) => {
+        const target = e.currentTarget as HTMLElement;
+        moveRoute(`/product/${target.dataset.id}`);
+      });
+    }
+  }
+};

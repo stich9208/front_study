@@ -16,20 +16,3 @@ if (pathname !== store.currentPath) {
 }
 
 render(root, store);
-
-document.addEventListener("click", (e: MouseEvent) => {
-  if (e?.target && (e.target as Element).className === "Product") {
-    console.log(e.target);
-  }
-  if (
-    e?.target &&
-    (e.target as Element).parentElement?.className === "Product" &&
-    (e.target as Element).tagName === "IMG"
-  ) {
-    (e.target as Element).parentElement?.click();
-  }
-});
-
-// const btn = document.getElementsByClassName("bubu")[0];
-// const dbtn = document.getElementsByClassName("detail")[0];
-// dbtn.addEventListener("click", (e) => moveRoute(e, "/products/191919"));
