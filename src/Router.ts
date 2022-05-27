@@ -11,7 +11,7 @@ export const Router = (store: storeInterface): string => {
     if (store.productId !== Number(productId)) {
       updateState({ productId: Number(productId) }, store);
     }
-    return Detail(store.productId);
+    return Detail(Number(productId));
   } else {
     switch (store.currentPath) {
       case "/":
