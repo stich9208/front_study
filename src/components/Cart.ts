@@ -1,4 +1,5 @@
 import { store, moveRoute, commaForPrice } from "../util";
+import { cartItemInterface, productOptionInterface } from "../interface/data";
 
 export const Cart = (): string => {
   const storageCartList = localStorage.getItem("products_cart");
@@ -14,10 +15,10 @@ export const Cart = (): string => {
   if (!storageCartList) emptyCartFunc();
   else {
     const cartList = JSON.parse(storageCartList);
-    cartList.map((cartItem: any) => {
+    cartList.map((cartItem: cartItemInterface) => {
       const product = productList[cartItem.productId - 1];
       const productOption = product.productOptions.find(
-        (option: any) => option.id === cartItem.optionId
+        (option: productOptionInterface) => option.id === cartItem.optionId
       );
       totalPrice += (product.price + productOption.price) * cartItem.quantity;
       cartHtml += `<li class="Cart__item">

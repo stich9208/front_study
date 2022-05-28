@@ -1,7 +1,6 @@
 import { Router } from "./Router";
 import { storeInterface } from "./interface/store";
-import { productDetailInterface } from "./interface/data";
-import { cartItemType } from "./types/data";
+import { productDetailInterface, cartItemInterface } from "./interface/data";
 
 //variables
 export const root = document.getElementsByClassName("App")[0];
@@ -63,7 +62,7 @@ export const hydrate = () => {
       if (store.selectedOptionIndex === "") {
         return;
       }
-      let cartList: cartItemType[] = [];
+      let cartList: cartItemInterface[] = [];
       const cartItem = {
         productId: store.productId,
         optionId:
