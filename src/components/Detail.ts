@@ -5,6 +5,7 @@ export const Detail = (id: number): string => {
   if (!product.name) getProduct(id);
 
   let optionHtml = "";
+
   selectedOptionIndex === 0
     ? (optionHtml += "<option selected>선택하세요</option>")
     : (optionHtml += "<option>선택하세요</option>");

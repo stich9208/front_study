@@ -90,6 +90,15 @@ export const hydrate = () => {
         updateState({ optionCount: target.value }, store);
       });
   }
+
+  if (store.currentPath === "/cart") {
+    const orderBtn = document.getElementsByClassName("OrderButton")[0];
+    orderBtn.addEventListener("click", () => {
+      alert("주문되었습니다");
+      localStorage.clear();
+      moveRoute("/");
+    });
+  }
 };
 
 //api functions
@@ -103,6 +112,9 @@ export const getList = async () => {
 export const getProduct = async (id: number) => {
   fetch(`http://localhost:3000/dev/products/${id}`)
     .then((res) => res.json())
-    .then((res) => updateState({ product: res }, store))
+    .then((res) => {
+      store.productList.splice(id - 1, 1, res);
+      updateState({ product: res }, store);
+    })
     .catch((err) => console.log("detail api error", err));
 };
