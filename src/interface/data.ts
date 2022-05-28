@@ -2,7 +2,7 @@ export interface productOptionInterface {
   created_at: Date;
   id: number;
   name: string;
-  prcie: number;
+  price: number;
   stock: number;
   updated_at: Date;
 }
@@ -13,4 +13,10 @@ export interface productDetailInterface {
   name: string;
   price: number;
   productOptions: productOptionInterface[];
+}
+
+export interface cartItemInterface {
+  productId: number;
+  optionId: number;
+  quantity: number;
 }
