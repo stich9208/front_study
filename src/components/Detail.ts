@@ -23,6 +23,7 @@ export const Detail = (id: number): string => {
           option.price === 0 ? "" : `(+${commaForPrice(option.price)})`
         }</option>`);
   });
+  console.log(product);
 
   return `<div class="ProductDetailPage">
   <h1>커피잔 상품 정보</h1>

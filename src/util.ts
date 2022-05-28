@@ -87,7 +87,16 @@ export const hydrate = () => {
     if (input)
       input.addEventListener("change", (e: Event) => {
         const target = e.currentTarget as HTMLSelectElement;
-        updateState({ optionCount: target.value }, store);
+        if (typeof store.selectedOptionIndex === "number") {
+          const { stock } =
+            store.product.productOptions[store.selectedOptionIndex - 1];
+          if (Number(target.value) > stock) {
+            alert("선택 가능한 수량을 초과 하였습니다.");
+            target.value = String(stock);
+          } else {
+            updateState({ optionCount: target.value }, store);
+          }
+        }
       });
   }
 
